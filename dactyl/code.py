@@ -12,7 +12,7 @@ from kmk.modules.split import Split, SplitType, SplitSide
 # keyboard.debug_enabled = True
 keyboard = KMKKeyboard()
 
-# keyboard.modules.append(Layers())
+keyboard.modules.append(Layers())
 
 # side = SplitSide.RIGHT if str(getmount('/').label)[-1] == 'R' else SplitSide.LEFT
 
@@ -66,7 +66,7 @@ keyboard.col_pins = (
     board.GP6,
     )
 keyboard.row_pins = (
-    board.GP21,
+    board.GP22,
     board.GP20,
     board.GP19,
     board.GP18,
@@ -80,62 +80,61 @@ keyboard.diode_orientation = DiodeOrientation.COL2ROW
 _______ = KC.TRNS
 XXXXXXX = KC.NO
 
-FnKey = KC.MO(1)
-
 keyboard.keymap = [
-    [  # My Base 
-        KC.ESC,  KC.N1,   KC.N2,   KC.N3, KC.N4, KC.N5,         KC.N6,  KC.N7,   KC.N8,   KC.N9, KC.N0, KC.LBRACKET,
-        KC.GRV,  KC.Q,    KC.W,    KC.E,  KC.R,  KC.T,          KC.Y,  KC.U,    KC.I,    KC.O,  KC.P,  KC.RBRACKET,
-        KC.LALT,  KC.A,    KC.S,    KC.D,  KC.F,  KC.G,         KC.H,  KC.J,    KC.K,    KC.L,    KC.SCOLON,  KC.QUOTE,
-        KC.LGUI,  KC.Z,    KC.X,    KC.C,  KC.V,  KC.B,         KC.N,  KC.M,    KC.COMMA,    KC.DOT,  KC.SLASH,  KC.BSLASH,
-        KC.NO,  KC.NO,   KC.I,    KC.U,  KC.BSPC,  KC.SPC,      KC.SPACE,  KC.ESC,   KC.MINUS,    KC.EQUAL,  KC.NO,  KC.NO,
-        KC.NO,  KC.NO,   KC.DEL,    KC.ENT,  KC.PGDN,  KC.TAB,  KC.RCTL,  KC.PGUP,   KC.RALT,    KC.PGDN,  KC.NO,  KC.NO,
-    ]
-    # # Base Layer
-    # [
-    #     # COL GP28		COL GP27	COL GP26	COL GP22	COL GP21	COL GP20	COL GP19	<>	COL GP18		COL GP17	COL GP16	COL GP14	COL GP13	COL GP12	COL GP11
-
-    #     KC.ESCAPE,		KC.N1,		KC.N2,		KC.N3,		KC.N4,		KC.N5,		KC.EQUAL, 		KC.MO(1),		KC.N6,		KC.N7,		KC.N8,		KC.N9,		KC.N0,		KC.MO(2),\
-
-    #     KC.MEH,			KC.Q,		KC.W,		KC.E,		KC.R,		KC.T,		KC.LBRACKET, 	KC.RBRACKET,	KC.Y,		KC.U,		KC.I,		KC.O,		KC.P,		KC.MINUS,\
-
-    #     KC.TAB,			KC.A,		KC.S,		KC.D,		KC.F,		KC.G,		XXXXXXX, 		XXXXXXX,		KC.H,		KC.J,		KC.K,		KC.L,		KC.SCOLON,	KC.QUOTE,\
-
-    #     KC.LSHIFT,		KC.Z,		KC.X,		KC.C,		KC.V,		KC.B,		KC.LALT, 		KC.MO(2),		KC.N,		KC.M,		KC.COMMA,	KC.DOT,		KC.SLASH,	KC.RSHIFT,\
-
-    #     KC.LGUI,		KC.GRV,		KC.BSLASH,	KC.LALT,	KC.LCTRL,	KC.SPACE,	KC.MO(1),	 	KC.ENTER,		KC.BSPACE,	KC.MO(2),	KC.LEFT,	KC.RIGHT,	KC.UP,		KC.DOWN,\
-
-    #  ],
-
-    # # M1 Layer
-    # [
-    #     # COL GP28		COL GP27	COL GP26	COL GP22	COL GP21	COL GP20	COL GP19	<>	COL GP18		COL GP17	COL GP16			COL GP15	COL GP14			COL GP13	COL GP12
-    #     _______,		KC.F1,		KC.F2,		KC.F3,		KC.F4,		KC.F5,		KC.F6,			_______,		KC.F7,		KC.F8,				KC.F9,		KC.F10,				KC.F11,		KC.F12, \
-
-    #     _______,		KC.EXLM,	KC.AT,		KC.HASH,	KC.DOLLAR,	KC.PERCENT,	_______, 		_______,		_______,	KC.LALT(KC.LEFT),	KC.UP,		KC.LALT(KC.RIGHT),	_______,	_______, \
-
-    #     _______,		KC.N1,		KC.N2,		KC.N3,		KC.N4,		KC.N5,		XXXXXXX, 		XXXXXXX,		_______,	KC.LEFT,			KC.DOWN,	KC.RIGHT,			_______,	_______, \
-
-    #     _______,		_______,	_______,	_______,	_______,	_______,	_______,    	_______,    	_______,	_______,			_______,    _______,			_______,	_______, \
-
-    #     _______,		_______,	_______,	_______,	_______,    _______,    _______,	 	_______,		_______,    _______,    		_______,    _______,    		_______,	_______, \
-
-    #  ],
-
-    # # M2 Layer
-    # [
-    #     # COL GP28		COL GP27	COL GP26	COL GP22	COL GP21	COL GP20	COL GP19	<>	COL GP18		COL GP17	COL GP16	COL GP15	COL GP14	COL GP13	COL GP12
-    #     _______,		_______,	_______,	_______,	_______,	_______,	_______, 		_______,		_______,	_______,	_______,	_______,	_______,	_______, \
-
-    #     _______,		_______,	_______,	_______,	_______,	_______,	_______, 		_______,		KC.CIRC,	KC.AMPR,	KC.ASTR,	KC.LPRN,	KC.RPRN,	_______, \
-
-    #     _______,		_______,	_______,	_______,	_______,	_______,	XXXXXXX, 		XXXXXXX,		KC.N6,		KC.N7,		KC.N8,		KC.N9,		KC.N0,		_______, \
-
-    #     _______,		_______,	_______,	_______,	_______,	_______,	_______,    	_______,    	_______,	_______,	_______,    _______,	_______,	_______, \
-
-    #     _______,		_______,	_______,	_______,	_______,    _______,    _______,	 	_______,		_______,    _______,    _______,    _______,    _______,	_______, \
-
-    #  ],
+    [  # Base Layer
+        KC.GRV,             KC.N1,      KC.N2,      KC.N3,      KC.N4,      KC.N5,      KC.N6,          KC.N7,          KC.N8,      KC.N9,      KC.N0,      KC.LBRACKET,
+        KC.TAB,             KC.Q,       KC.W,       KC.E,       KC.R,       KC.T,       KC.Y,           KC.U,           KC.I,       KC.O,       KC.P,       KC.RBRACKET,
+        KC.LGUI,            KC.A,       KC.S,       KC.D,       KC.F,       KC.G,       KC.H,           KC.J,           KC.K,       KC.L,       KC.SCOLON,  KC.QUOTE,
+        KC.LCTRL,           KC.Z,       KC.X,       KC.C,       KC.V,       KC.B,       KC.N,           KC.M,           KC.COMMA,   KC.DOT,     KC.SLASH,   KC.BSLASH,
+        #
+        #                               X #         # X         # #         # #              # #             # #             X #         # X
+        #                                  # #         # #         X #         # X        X #             # X             # #         # #
+        #                                    # #         # #         # #         # #    # #             # #             # #         # #
+        #                                    # #         # #         # #         # #    # #             # #             # #         # #
+        XXXXXXX,              XXXXXXX,  KC.TT(1),   KC.TT(2),   KC.BSPC,    KC.SPC,     KC.SPACE,       KC.ESC,         KC.MINUS,   KC.EQUAL,   XXXXXXX,    XXXXXXX,
+        #
+        #                               # #         # #         # #         # #              # #             # #             # #         # #
+        #                                  # #         # #         # #         # #        # #             # #             # #         # #
+        #                                    X #         # X         # #         # #    X #             # X             # #         # #
+        #                                    # #         # #         X #         # X    # #             # #             X #         # X
+        XXXXXXX,              XXXXXXX,  KC.DEL,     KC.LSHIFT,  KC.PGDN,    KC.ENT,     KC.RSHIFT,      KC.PGUP,        KC.RALT,    KC.PGDN,    XXXXXXX,    XXXXXXX,
+    ],
+    [  # M1 Function Keys and Arrows
+        KC.F1,              KC.F2,      KC.F3,      KC.F4,      KC.F5,      KC.F6,      KC.F7,          KC.F8,          KC.F9,      KC.F10,     KC.F11,     KC.F12
+        _______,            _______,    _______,    _______,    _______,    _______,    _______,        KC.PGDN,        KC.PGUP,    _______,    _______,    _______,
+        _______,            _______,    _______,    _______,    _______,    _______,    KC.LEFT,        KC.DOWN,        KC.UP,      KC.RIGHT,   _______,    _______,
+        _______,            _______,    _______,    _______,    _______,    _______,    _______,        _______,        _______,    _______,    _______,    _______,
+        #
+        #                               X #         # X         # #         # #              # #             # #             X #         # X
+        #                                  # #         # #         X #         # X        X #             # X             # #         # #
+        #                                    # #         # #         # #         # #    # #             # #             # #         # #
+        #                                    # #         # #         # #         # #    # #             # #             # #         # #
+        XXXXXXX,            XXXXXXX,    _______,    _______,    _______,    _______,    _______,        _______,        _______,    _______,    XXXXXXX,    XXXXXXX,
+        #
+        #                               # #         # #         # #         # #              # #             # #             # #         # #
+        #                                  # #         # #         # #         # #        # #             # #             # #         # #
+        #                                    X #         # X         # #         # #    X #             # X             # #         # #
+        #                                    # #         # #         X #         # X    # #             # #             X #         # X
+        XXXXXXX,            XXXXXXX,    _______,    _______,    _______,    _______,    _______,        _______,        _______,    _______,    XXXXXXX,    XXXXXXX,
+    ],
+    [  # M2 Mouse Control and Function Keys
+        KC.F1,              KC.F2,      KC.F3,      KC.F4,      KC.F5,      KC.F6,      KC.F7,          KC.F8,          KC.F9,      KC.F10,     KC.F11,     KC.F12
+        _______,            _______,    _______,    _______,    KC.MB_MMB,  _______,    KC.MW_LEFT,     KC.MW_DOWN,     KC.MW_UP,   KC.MW_RIGHT,_______,    _______,
+        _______,            _______,    _______,    _______,    KC.MB_LMB,  KC.MB_RMB,  KC.MS_LEFT,     KC.MS_DOWN,     KC.MS_UP,   KC.MS_RIGHT,_______,    _______,
+        _______,            _______,    _______,    _______,    _______,    _______,    KC.MB_LMB,      KC.MB_RMB,      _______,    _______,    _______,    _______,
+        #
+        #                               X #         # X         # #         # #              # #             # #             X #         # X
+        #                                  # #         # #         X #         # X        X #             # X             # #         # #
+        #                                    # #         # #         # #         # #    # #             # #             # #         # #
+        #                                    # #         # #         # #         # #    # #             # #             # #         # #
+        XXXXXXX,            XXXXXXX,    _______,    _______,    _______,    _______,    _______,        _______,        _______,    _______,    XXXXXXX,    XXXXXXX,
+        #
+        #                               # #         # #         # #         # #              # #             # #             # #         # #
+        #                                  # #         # #         # #         # #        # #             # #             # #         # #
+        #                                    X #         # X         # #         # #    X #             # X             # #         # #
+        #                                    # #         # #         X #         # X    # #             # #             X #         # X
+        XXXXXXX,            XXXXXXX,    _______,    _______,    _______,    _______,    _______,        _______,        _______,    _______,    XXXXXXX,    XXXXXXX,
+    ],
 ]
 
 
